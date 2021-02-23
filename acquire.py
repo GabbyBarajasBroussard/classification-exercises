@@ -26,7 +26,7 @@ def get_connection(db, user=env.user, host=env.host, password=env.password):
 def get_titanic_data():
     filename = "titanic.csv"
     if os.path.isfile(filename):
-        return pd.read_csv(filename)
+        return pd.read_csv(filename, index = False)
     else:
         # read the SQL query into a dataframe
         df = pd.read_sql('SELECT * FROM passengers', get_connection('titanic_db'))
@@ -52,7 +52,7 @@ def get_iris_data():
         df = pd.read_sql('SELECT * FROM measurements JOIN species USING (species_id)', get_connection('iris_db'))
 
         # Write that dataframe to disk for later. Called "caching" the data for later.
-        df.to_csv(filename)
+        df.to_csv(filename, index = False)
 
         # Return the dataframe to the calling code
         return df  
