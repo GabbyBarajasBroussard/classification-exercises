@@ -32,7 +32,7 @@ def get_titanic_data():
         df = pd.read_sql('SELECT * FROM passengers', get_connection('titanic_db'))
 
         # Write that dataframe to disk for later. Called "caching" the data for later.
-        df.to_file(filename)
+        df.to_csv(filename)
 
         # Return the dataframe to the calling code
         return df  
@@ -49,10 +49,10 @@ def get_iris_data():
         return pd.read_csv(filename)
     else:
         # read the SQL query into a dataframe
-        df = pd.read_sql('SELECT * FROM measuresments JOIN species USING (species_id)', get_connection('iris_db'))
+        df = pd.read_sql('SELECT * FROM measurements JOIN species USING (species_id)', get_connection('iris_db'))
 
         # Write that dataframe to disk for later. Called "caching" the data for later.
-        df.to_file(filename)
+        df.to_csv(filename)
 
         # Return the dataframe to the calling code
         return df  
