@@ -21,15 +21,11 @@ import acquire
 # In[2]:
 
 
-def prep_iris(df):
-    df= df.drop(columns=['species_id', 'measurement_id'])
-    df= df.rename(columns={"species_name": "species"}, inplace= True)
-    dummy_df = pd.get_dummies(df[['species']])
-    df= pd.concat([df, dummy_df], axis=1)
-    return df
-
-# In[ ]:
-
-
+def prep_iris(iris):
+    iris= iris.drop(columns=['species_id', 'measurement_id'])
+    iris= iris.rename(columns={"species_name": "species"})
+    dummy_df = pd.get_dummies(iris[['species']])
+    iris = pd.concat([iris, dummy_df], axis=1)
+    return iris
 
 
