@@ -29,3 +29,28 @@ def prep_iris(iris):
     return iris
 
 
+# In[3]:
+
+
+def prep_titanic(df):
+    # drop missing observations of embark town
+    df = df[~df.embark_town.isnull()]
+    # use the pd.get_dummies to encode embark_town column
+    df_dummies = pd.get_dummies(df[['sex', 'embark_town']], drop_first=True)
+    df = pd.concat([df, df_dummies], axis=1)
+    # Drop the embarked and deck columns
+    df = df.drop(columns=['embarked', 'deck', 'passenger_id', 'class', 'sex', 'embark_town'])
+    return df
+
+
+# In[4]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
