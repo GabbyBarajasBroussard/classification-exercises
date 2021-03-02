@@ -43,7 +43,7 @@ def get_titanic_data():
 # In[7]:
 
 
-def get_iris_data():
+def get_iris_data(cached=False):
     filename = "iris.csv"
     if os.path.isfile(filename):
         return pd.read_csv(filename)
